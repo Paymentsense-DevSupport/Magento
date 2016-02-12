@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Paymentsense_Paymoto>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Paymentsense_Paymoto>
+    </modules>
+</config> 

@@ -1,0 +1,269 @@
+<?php
+
+$m_boTransactionAuthorised = false;
+$m_boValidCrossReference = false;
+$m_boExtensionVersionWithCrossReferenceFeature = true;
+$m_boExtensionVersionWithPaymentStatus         =  true;
+
+$m_order = $this->getInfo()->getOrder();
+$m_payment = $m_order->getPayment();
+$m_szOrderID = $m_order->getRealOrderId();
+$m_szOrderStatus = $m_order->getStatus();
+
+$m_szAmount = $m_order->getBaseGrandTotal();
+$m_nPaymentVoided = 0;//(int)$m_order->getVoided();
+$m_nPaymentRefunded = 0;
+$m_nPaymentCollected = 0;
+$m_boCanVoid = false;
+$m_boCanCollect = false;
+
+// get the additional information column data for a Magento payment
+$additional_info = $m_payment->getAdditionalInformation();
+$szToday = date("Ymd");
+//print_r($additional_info);
+// for redirected transactions the TransactionId can't be updated with a new CrossReference (ie: 3DS transaction), need to revert back to additional_info
+//$szCrossReference = $m_payment->getLastTransId();
+$additionalInfo = $m_payment->getAdditionalInformation();
+//echo $additional_info["CrossReference"];
+//die;
+if(!key_exists("CrossReference", $additionalInfo))
+{
+	 $szCrossReference = false;
+}
+else
+{
+	 $szCrossReference = $additional_info["CrossReference"];
+}
+
+if(!key_exists("TransactionDateTime", $additionalInfo))
+{
+	$szTransactionDateTime = false;
+}
+else
+{
+	 $szTransactionDateTime = $additional_info["TransactionDateTime"];
+}
+
+if(!key_exists("TransactionType", $additionalInfo))
+{
+	$szTransactionType = false;
+}
+else
+{
+	 $szTransactionType = $additional_info["TransactionType"];
+}
+
+if(key_exists("Voided", $additionalInfo))
+{
+	$m_nPaymentVoided = (int)$additional_info["Voided"];
+}
+if(key_exists("Refunded", $additionalInfo))
+{
+	$m_nPaymentRefunded = (int)$additional_info["Refunded"];
+}
+if(key_exists("Collected", $additionalInfo))
+{
+	$m_nPaymentCollected = (int)$additional_info["Collected"];
+}
+if(key_exists("PaymentStatus", $additionalInfo))
+{
+	$m_szTransactionStatus = $additional_info["PaymentStatus"];
+}
+if(!$szCrossReference ||
+	!$szTransactionDateTime ||
+	!$szTransactionType)
+{
+	$m_boExtensionVersionWithCrossReferenceFeature = false;
+}
+else
+{
+	
+	if($szTransactionType == 'PREAUTH')
+	{
+		
+		$m_szTransactionType = "PREAUTH";
+		
+		// check if payment can be voided
+		if ($additional_info['Voided'] !=1 && ($m_order->getData('status')!='canceled'&& $m_order->getData('status')!='pending'))
+		{
+			
+				$m_boCanVoid = true;
+			
+		}
+		
+		// check if payment can be collected
+		
+		if ($additional_info['Collected'] !=1 && $additional_info['Voided']!=1 && ($m_order->getData('status')!='canceled'&& $m_order->getData('status')!='pending'))
+		{
+			$m_boCanCollect = true;
+		}
+		
+	}
+	
+	else if($szTransactionType == 'SALE')
+	{
+		$m_szTransactionType = "SALE";
+		$m_szTransactionType = "SALE";
+		if ($additional_info['Voided'] !=1 && ($m_order->getData('status')!='canceled'&& $m_order->getData('status')!='pending'))
+		{
+			
+				$m_boCanVoid = true;
+			
+		}
+		// check if payment can be voided
+		/*
+		if(!$m_nPaymentVoided &&
+			!$m_nPaymentRefunded &&
+			// payment must be successful
+			$m_szOrderStatus == "pys_paid")
+		{
+			if(strtotime($szToday) == strtotime($szTransactionDateTime) &&
+				// for the time being only allow to execute a root VOID
+				$m_szOrderStatus == "pys_paid")
+			{
+				$m_boCanVoid = true;
+			}
+		}
+		*/
+		// check if it can be collected - only preauth can be collected
+		$m_nPaymentCollected = 0;
+	}
+	
+	else 
+	{
+		Mage::log('Order info error: transaction type: '.$szTransactionType.' is not supported by the Paymentsense/Paymentsensegateway extension');
+	}
+}
+?>
+
+<div>
+	CrossReference: 
+<?php
+if(!$m_boExtensionVersionWithCrossReferenceFeature)
+{
+	echo "<span style=\"font-weight:bold;color:Red;\">Missing data*</span>";
+}
+else
+{
+	echo "<span style=\"font-weight:bold;\">".$szCrossReference."</span>";
+}
+?>
+</div>
+<div>
+	Transaction Type: 
+<?php
+if(!$m_boExtensionVersionWithCrossReferenceFeature)
+{
+	echo "<span style=\"font-weight:bold;color:Red;\">Missing data*</span>";
+}
+else
+{
+	echo "<span style=\"font-weight:bold;\">".$m_szTransactionType."</span>";
+}
+?>
+</div>
+<div>
+	Amount: <?php echo "<span style=\"font-weight:bold\">".$m_szAmount."</span>"; ?>
+</div>
+<div>
+	 Payment Status: 
+	 <?php
+		  if(!$m_boExtensionVersionWithPaymentStatus)
+		  {
+		  echo "<span style=\"font-weight:bold;color:Red;\">Missing data*</span>";
+		  }
+		  else
+		  {
+		  echo "<span style=\"font-weight:bold;\">".$m_szTransactionStatus."</span>";
+		  }
+	 ?>
+</div>
+<?php if(!$m_boExtensionVersionWithCrossReferenceFeature): ?>
+<div>
+	<span style="font-weight:bold;color:Red;">* Incomplete orders and orders processed through an older payment extension will not have all the data necessary for CrossReference payments</span>
+</div>
+<?php else: ?>
+<div>
+	<?php if($m_boCanVoid==true && $m_boCanCollect!=true): ?>
+	
+	<?php if (strtotime($szToday) == strtotime($szTransactionDateTime)): ?>
+	
+	<button type="button" id="voidButton" onclick="PYS_runCrossReferenceTransaction('<?php echo $this->getUrl('pay/index/void', array('_secure' => true)); ?>', '<?php echo $m_szOrderID; ?>', '<?php echo $szCrossReference; ?>', 'VOID');">
+		<span>VOID</span>
+	</button>
+	<?php else: ?>
+	<button type="button" id="voidButton" onclick="PYS_runCrossReferenceTransaction('<?php echo $this->getUrl('pay/index/payrefund', array('_secure' => true)); ?>', '<?php echo $m_szOrderID; ?>', '<?php echo $szCrossReference; ?>', 'REFUND');">
+		<span>REFUND</span>
+	</button>
+	<?php endif; ?>
+	
+	<?php endif; ?>
+	<?php if($m_boCanCollect==true): ?>
+	<button type="button" id="collectionButton" onclick="PYS_runCrossReferenceTransaction('<?php echo $this->getUrl('pay/index/collection', array('_secure' => true)); ?>', '<?php echo $m_szOrderID; ?>', '<?php echo $szCrossReference; ?>', 'COLLECTION');">
+		<span>COLLECT</span>
+	</button>
+	<?php endif; ?>
+</div>
+<?php endif; ?>
+
+<script type="text/javascript">
+function PYS_runCrossReferenceTransaction(szActionURL, szOrderID, szCrossReference, szTransactionType)
+{
+    var szConfirmMessage;
+    var szText;
+    
+    if (szActionURL == "")
+    {
+        alert("Error: Invalid action URL");
+    }
+
+    if (szTransactionType == "VOID")
+    {
+        szConfirmMessage = "Are you sure you would like to void this payment?";
+        szText = "<ul class='messages'><li class='success-msg'><ul><li>Payment successfully voided</li></ul></li></ul>";
+    }
+    else if (szTransactionType == "COLLECTION")
+    {
+        szConfirmMessage = "Are you sure you would like to collect this authorized payment?";
+        szText = "<ul class='messages'><li class='success-msg'><ul><li></li></ul></li></ul>";
+    }
+    else if (szTransactionType == "REFUND")
+    {
+        szConfirmMessage = "Are you sure you would like to refund this payment?";
+       szText = "<ul class='messages'><li class='success-msg'><ul><li></li></ul></li></ul>";
+    }
+    else
+    {
+        alert("Error: Unknown transaction type to run for this action: " + szTransactionType);
+        return;
+    }
+
+    if (confirm(szConfirmMessage))
+    {
+        new Ajax.Request(szActionURL,
+                            { method: "post",
+                                parameters: { OrderID: szOrderID, CrossReference: szCrossReference },
+                                onSuccess: function (result) {
+					 var szMessage = result.responseText;
+                                         if (szMessage == "0") {
+						if(szTransactionType=='VOID')
+						{
+							var successmessage = 'Payment successfully voided';
+						}
+						else if(szTransactionType=='REFUND')
+						{
+							var successmessage = 'Payment successfully refunded';
+						}
+						else{
+							var successmessage = 'Authorized payment successfully collected';
+						}
+						
+						alert(successmessage);
+						location.href = location.href; /* cheating with displaying a success message before the page is refreshed */
+                                         $('messages').update(szText); }
+                                          else { alert(szMessage); }
+					}
+                            });
+    }
+}
+</script>

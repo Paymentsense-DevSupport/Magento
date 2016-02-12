@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Paymentsense_Payhosted>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Paymentsense_Payhosted>
+    </modules>
+</config> 

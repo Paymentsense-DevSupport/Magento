@@ -1,0 +1,16 @@
+<?php if($this->getSource() instanceof Mage_Sales_Model_Order){ ?>
+<?php if ((float) $this->getSource()->getSurchargeAmountRefunded()): ?>
+    <tr>
+        <td class="label"><strong><?php echo Mage::helper('surcharge')->__('Surcharge refunded to customer') ?></strong></td>
+        <td><strong><?php echo $this->getSource()->getSurchargeAmountRefunded(); ?></strong></td>
+    </tr>
+<?php endif; ?>
+<?php } else { ?>
+<?php if ((float) $this->getSource()->getSurchargeAmount()): ?>
+    <tr>
+        <td class="label"><strong><?php echo Mage::helper('surcharge')->__('Surcharge Refunded') ?></strong></td>
+        <td><strong><?php echo $this->getSource()->getSurchargeAmount(); ?></strong></td>
+    </tr>
+<?php endif; 
+}?>
+

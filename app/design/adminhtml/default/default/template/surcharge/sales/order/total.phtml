@@ -1,0 +1,9 @@
+<?php $this->setPriceDataObject($this->getSource()) ?>
+<?php if ((float) $this->getSource()->getSurchargeAmount()): ?>
+    <tr>
+        <td class="label"><?php echo Mage::helper('surcharge')->formatSurcharge($this->getSource()->getSurchargeAmount()) ?></td>
+        <td>
+            <?php echo $this->displayPrices($this->getSource()->getBaseSurchargeAmount(), $this->getSource()->getSurchargeAmount()); ?>
+        </td>
+    </tr>
+<?php endif; ?>
