@@ -37,8 +37,8 @@ class Paymentsense_Surcharge_Model_Surcharge extends Varien_Object{
 	}
 	
 	public function canApply($address){
-		$quote = Mage::getModel('checkout/session')->getQuote();
-	        $payment_code =  $quote->getPayment()->getData('method');
+		//$quote = Mage::getModel('checkout/session')->getQuote();
+	    //$payment_code =  $quote->getPayment()->getData('method');
 		//if(Mage::getStoreConfig('payment/pay/payment_surcharge') == 1 && $payment_code == 'pay'){
 		        return true;
 		//}
