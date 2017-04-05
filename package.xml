@@ -1,18 +1,233 @@
 <?xml version="1.0"?>
 <package>
-    <name>Paymentsense</name>
-    <version>1.0.25</version>
+    <name>Paymentsense_Gateway</name>
+    <version>2.0.0</version>
     <stability>stable</stability>
-    <license uri="http://opensource.org/licenses/osl-3.0.php">GNU General Public License (GPL)</license>
+    <license uri="http://www.gnu.org/licenses/gpl.html">GPL</license>
     <channel>community</channel>
     <extends/>
-    <summary>Paymentsense extension for Magento</summary>
-    <description>Paymentsense extension for Magento</description>
-    <notes>First previous release</notes>
-    <authors><author><name>paymentsense</name><user>lewis</user><email>lewis@mail.com</email></author></authors>
-    <date>2014-12-16</date>
-    <time>10:28:31</time>
-    <contents><target name="magelocal"><dir name="Paymentsense"><dir name="Pay"><dir name="Block"><dir name="Adminhtml"><dir name="Sales"><dir name="Order"><file name="Payment.php" hash="c5722113f55cadad446af2bde3a5b2a9"/></dir></dir><dir name="System"><dir name="Config"><dir name="Form"><file name="Button.php" hash="92301e4d0079f8104a40dd6aa28825b9"/></dir></dir></dir></dir><dir name="Form"><file name="Pay.php" hash="2d57101707c19d3aea08423ef70e7c22"/></dir><dir name="Info"><file name="Pay.php" hash="ba19312db657a30cbe16187d22ac4330"/></dir></dir><dir name="Helper"><file name="Data.php" hash="5631c8a40465209c3e60cfa8abcb820e"/></dir><dir name="Model"><file name="Pay.php" hash="61e1f0f9a2c037321d0f45b5886e4254"/><dir name="Source"><file name="Action.php" hash="3bbd3bceb220452c725b66493480afe8"/><file name="Currency.php" hash="4f29c3ed5757f480221f83119485ed0e"/><file name="PaymentAction.php" hash="74907e7f2ea3776db59fa962d48d4ee8"/></dir></dir><dir name="controllers"><dir name="Adminhtml"><dir name="Sales"><file name="OrderController.php" hash="471750aae1a41df19a97b16f142d8542"/></dir></dir><file name="IndexController.php" hash="118f4cd9a2a88b87ef26d536c856ddcc"/></dir><dir name="etc"><file name="config.xml" hash="27c73ba7c6bd53950eda0a604ff6b581"/><file name="system.xml" hash="7113f6966a12ad58bf38481e446a4d9e"/></dir><dir name="sql"><dir name="pay_setup"><file name="mysql4-install-0.1.0.php" hash="dac28c274b85655eaf9cbc5fb10a61f7"/></dir></dir></dir><dir name="Payhosted"><dir name="Block"><dir name="Form"><file name="Payhosted.php" hash="736cc3f011f3a1f0db3d0d2f314c0eb5"/></dir><dir name="Info"><file name="Payhosted.php" hash="4a736d3f17b4683fc82c704ca0ba4388"/></dir></dir><dir name="Helper"><file name="Data.php" hash="5422740173465a7527502a9bbd4bf812"/></dir><dir name="Model"><file name="Payhosted.php" hash="3d9e292623b374d1aae4be2fac35fdcd"/><dir name="Source"><file name="Action.php" hash="6e4fb944a8dc3cf26c035585318edfcf"/><file name="Currency.php" hash="22bd26daeef31b6a0adb1c141f8c64ef"/></dir></dir><dir name="controllers"><file name="IndexController.php" hash="3177df4603873f4abeb0986cbd5124b8"/></dir><dir name="etc"><file name="config.xml" hash="a7330e7993056e5969b19764521fb2cc"/><file name="system.xml" hash="02e119b42b29e5c14fc8b2a276303874"/></dir></dir><dir name="Paymoto"><dir name="Block"><dir name="Adminhtml"><dir name="Sales"><dir name="Order"><file name="Payment.php" hash="e853c979b0b876f015ec10ad65d9934e"/></dir></dir></dir><dir name="Form"><file name="Paymoto.php" hash="2b64da9141522a5f4beaec4f9d4be52e"/></dir><dir name="Info"><file name="Paymoto.php" hash="cc589d7afe59e7664a0fdb5c3180057b"/></dir></dir><dir name="Helper"><file name="Data.php" hash="d173222e556b0cede82c26ba1e58949b"/></dir><dir name="Model"><file name="Paymoto.php" hash="c808de42c26460e5ca135ea06651e97a"/><dir name="Source"><file name="Action.php" hash="81f2e10f593f85c041a1ce76f8e0a593"/><file name="Currency.php" hash="a2947033e7d33dbe3a41663c1c3348d8"/></dir></dir><dir name="controllers"><dir name="Adminhtml"><dir name="Sales"><dir name="Order"><file name="CreateController.php" hash="4b580424f6700f461e45e86050edaebb"/></dir></dir></dir><file name="IndexController.php" hash="15e0d4f66c59c809c13781525c80e5b6"/></dir><dir name="etc"><file name="config.xml" hash="6ded23732e8d192619b1835470323cdc"/><file name="system.xml" hash="3c360a1eb8c485c8c20a216a4a655303"/></dir><dir name="sql"><dir name="paymoto_setup"><file name="mysql4-install-0.1.0.php" hash="54c68eb340fc83eca14e2396b2cbdb5f"/></dir></dir></dir><dir name="Surcharge"><dir name="Block"><dir name="Sales"><dir name="Order"><file name="Total.php" hash="7aa20117f0eaeb8d9b3c15728343f08f"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="44c1f398a95fdc6a544a242cddc87d58"/></dir><dir name="Model"><file name="Observer.php" hash="8194ffe78662bb452c1e2d8a0a33f186"/><dir name="Sales"><dir name="Order"><dir name="Total"><dir name="Creditmemo"><file name="Surcharge.php" hash="baf527cdaed0e1d160d646e083e57747"/></dir><dir name="Invoice"><file name="Surcharge.php" hash="fba7490667d1fc30786247df1de346fc"/></dir></dir></dir><dir name="Quote"><dir name="Address"><dir name="Total"><file name="Surcharge.php" hash="63379c23e3858d157761fff96f1704b6"/></dir></dir></dir></dir><file name="Surcharge.php" hash="12d54441587416c3a7194212dbaab9f3"/></dir><dir name="etc"><file name="config.xml" hash="d2a090fe3a8e1a5c370c416541402a4c"/></dir><dir name="sql"><dir name="surcharge_setup"><file name="mysql4-install-0.1.0.php" hash="ce214df593c46f1599d364ab7744d784"/><file name="mysql4-upgrade-0.1.0-0.1.1.php" hash="9cc610c8ff023e7370869e95b693ab7c"/><file name="mysql4-upgrade-0.1.1-0.1.2.php" hash="d06dd7dc492e908d14753960d205d984"/><file name="mysql4-upgrade-0.1.2-0.1.3.php" hash="01afba4c493779f118285ca5b5185a45"/><file name="mysql4-upgrade-0.1.3-0.1.4.php" hash="3bd0bc4495e7577477fae2ec39c309d8"/></dir></dir></dir><dir name="lib"><file name="cacert.pem" hash="36c2e174ffa1e4739e5ce879d660dd6a"/></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Paymentsense_Pay.xml" hash="bc66f70175774eea9063df15a69995c2"/><file name="Paymentsense_Payhosted.xml" hash="cf0fea6c9c7fc45cb56b09138cf51f2b"/><file name="Paymentsense_Paymoto.xml" hash="932bf6619cb45d79d63d553ce4fab6fd"/><file name="Paymentsense_Surcharge.xml" hash="04f1e8fc55cf6527402f58bf4f9aa122"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="pay.xml" hash="0897da7c4d54edd40e9507c9c8e679af"/><file name="surcharge.xml" hash="28720c8be4efe93ede361a90f5d9e0b5"/></dir><dir name="template"><dir name="payment"><dir name="info"><file name="paymentinfo.phtml" hash="c6fc27778328047ae093bde9aa8d9462"/></dir></dir><dir name="paymoto"><file name="paymoto.phtml" hash="033315e2771ecad290014350cc2d0669"/></dir><dir name="surcharge"><dir name="sales"><dir name="order"><file name="refunded.phtml" hash="9d44264184bec5bf403c9e3739018a9e"/><file name="total.phtml" hash="a91ed3895c33b32c4b727e7592fb7d50"/></dir></dir></dir></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="pay.xml" hash="09f644f29e9d2f434ddb47c36c3e6394"/><file name="payhosted.xml" hash="36d03108531da60c117d893dcabddef6"/><file name="paymoto.xml" hash="a30ebe45163eab38643bb714f4348dcf"/><file name="surcharge.xml" hash="5dc44afe9d8eb0ed1b8156ce78b5af2b"/></dir><dir name="template"><dir name="pay"><dir name="form"><file name="porttest.phtml" hash="e8dc89e431eb5b91b94c6b41083b5fa3"/><file name="secureform.phtml" hash="5cd2ce9fa222916ab1214001e98418e9"/></dir><file name="pay.phtml" hash="9042ee78dc46817abc4e0c593100b259"/></dir><dir name="payhosted"><file name="payhosted.phtml" hash="c32e3e07828de5c24a5bd3554e53a82a"/></dir><dir name="paymoto"><file name="paymoto.phtml" hash="a35f08195dfb846c0440576e897c0f8c"/></dir><dir name="surcharge"><file name="surcharge.phtml" hash="e23a5b335446b3539783700ecea3ca1a"/></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="base"><dir name="default"><dir name="images"><file name="paymentsense.jpg" hash="dd09792e8631898849d125aa5eee9f8c"/></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="images"><file name="paymentsense.jpg" hash="dd09792e8631898849d125aa5eee9f8c"/></dir></dir></dir></dir></target></contents>
+    <summary>Payment Plugin for the Paymentsense Payment Gateway.</summary>
+    <description>Fully supports 3D secure transactions and all of the integration methods provided by Paymentsense.
+    </description>
+    <notes>Direct Integration - Fix to ensure the order status is set to failed if unable to communicate with payment
+        gateway after the 3D secure process. Error logged to log file.
+    </notes>
+    <authors>
+        <author>
+            <name>Paymentsense</name>
+            <user>Paymentsense</user>
+            <email>devsupport@paymentsense.com</email>
+        </author>
+    </authors>
+    <date>2016-05-10</date>
+    <time>15:07:57</time>
+    <contents>
+        <target name="magelocal">
+            <dir name="Paymentsense">
+                <dir name="Paymentsense">
+                    <dir name="Block">
+                        <dir name="Adminhtml">
+                            <dir name="Sales">
+                                <dir name="Order">
+                                    <file name="Payment.php" hash="1cff6196bd79d3989b960506cc87201e"/>
+                                </dir>
+                            </dir>
+                        </dir>
+                        <file name="Error.php" hash="660d3cbde48910ef271df9e05130a6d7"/>
+                        <file name="Form.php" hash="ea5b3817c9607a94f4685d53d0b18569"/>
+                        <file name="Info.php" hash="57a4bfec1a1c769de063be2b922f4a97"/>
+                        <file name="Redirect.php" hash="f1d145c83982bdfbb7f73fc7a1acc950"/>
+                        <file name="Threedsecure.php" hash="9d75776f34c5acaf6ea265f35f302c69"/>
+                    </dir>
+                    <dir name="Helper">
+                        <file name="Data.php" hash="e024ec0479d1e8e7efcf4751b05194d6"/>
+                    </dir>
+                    <dir name="Model">
+                        <dir name="Common">
+                            <file name="GlobalErrors.php" hash="e0f9062ca2db4c85d17e6939f9bd7641"/>
+                            <file name="ISOCountries.php" hash="6c59574f190f6a67e38578d876c14edf"/>
+                            <file name="ISOCurrencies.php" hash="2568f980f09bd8a7d4beaf3d16456d28"/>
+                            <file name="PaymentFormHelper.php" hash="cf5a1ea6f653f4d5024adf491d5f5ba8"/>
+                            <dir name="ThePaymentGateway">
+                                <file name="PaymentSystem.php" hash="e7d13200c853536cf641bde7f714b54e"/>
+                                <file name="SOAP.php" hash="2b966f946889c6f151b222c322d7a0ee"/>
+                                <file name="TPG_Common.php" hash="0170a3c7f6a01faf9aee9b0f94da6d2a"/>
+                            </dir>
+                        </dir>
+                        <file name="CommonFunctions.php" hash="b667c1886391bbca86058c80dca1af79"/>
+                        <file name="Direct.php" hash="46a3152f88c454efff8fff4f126ced52"/>
+                        <file name="Request.php" hash="370f028086d13ae1df470e93a67dea66"/>
+                        <dir name="Resource">
+                            <dir name="Eav">
+                                <dir name="Mysql4">
+                                    <file name="Setup.php" hash="b2a7e887464ff91517dbb4fd62f13c66"/>
+                                </dir>
+                            </dir>
+                        </dir>
+                        <dir name="Source">
+                            <file name="HashMethod.php" hash="997928579b69d21ae9eebec698c715c6"/>
+                            <file name="OrderStatus.php" hash="4c44f8ba1652f20d934aa200ed4c8d00"/>
+                            <file name="PaymentAction.php" hash="3aab84053c69af1de2e743ee590fdf0c"/>
+                            <file name="PaymentMode.php" hash="ea8af602bd09d54a123af64bc4b680d0"/>
+                            <file name="ResultDeliveryMethod.php" hash="afb838319df715e604173d6aa143feab"/>
+                        </dir>
+                    </dir>
+                    <dir name="controllers">
+                        <file name="PaymentController.php" hash="ecb152d90cd1ee25b6d0e555f0a21ea3"/>
+                    </dir>
+                    <dir name="etc">
+                        <file name="config.xml" hash="41d10598438bb48fa5397cdbdc34b493"/>
+                        <file name="system.xml" hash="693774d47b6fb2262a4e98bc24566036"/>
+                    </dir>
+                    <dir name="sql">
+                        <dir name="Paymentsense_setup">
+                            <file name="mysql4-install-0.1.0.php" hash="bda643d24b75e0dc527dc2caa6d47689"/>
+                        </dir>
+                    </dir>
+                </dir>
+                <dir name="Checkout">
+                    <dir name="Block">
+                        <dir name="Cart">
+                            <file name="Totals.php" hash="ca91395788c746c8eef3a4b4f09833f7"/>
+                        </dir>
+                        <dir name="Onepage">
+                            <dir name="Payment">
+                                <file name="Methods.php" hash="75a8a2961be74499d47ab398a8e1ba8a"/>
+                            </dir>
+                        </dir>
+                    </dir>
+                    <dir name="Model">
+                        <dir name="Type">
+                            <file name="Onepage.php" hash="2dc7e8f4e2b0292dc9160e4f9cf9ae5b"/>
+                        </dir>
+                    </dir>
+                    <dir name="etc">
+                        <file name="config.xml" hash="9dbd58b6b32491d65e5c7d5850aa3420"/>
+                    </dir>
+                </dir>
+                <dir name="Sales">
+                    <dir name="Block">
+                        <dir name="Order">
+                            <file name="Totals.php" hash="ceeea63efb04baded1446aaaab94c825"/>
+                        </dir>
+                    </dir>
+                    <dir name="Model">
+                        <dir name="Order">
+                            <file name="Invoice.php" hash="cb7816afd62acb20cae32ee665965c12"/>
+                            <file name="Payment.php" hash="9f7b2b9d6ef5b63101a0991cd2333a9e"/>
+                        </dir>
+                        <file name="Order.php" hash="e84594434822e321f271e3e463ddbcb9"/>
+                        <dir name="Service">
+                            <file name="Quote.php" hash="85d5bfcaf589ea7d21180ba97f92e136"/>
+                        </dir>
+                    </dir>
+                    <dir name="etc">
+                        <file name="config.xml" hash="41f8d7978cb7e4cfffa0272d80e8f7bd"/>
+                    </dir>
+                </dir>
+            </dir>
+        </target>
+        <target name="magedesign">
+            <dir name="adminhtml">
+                <dir name="base">
+                    <dir name="default">
+                        <dir name="template">
+                            <dir name="Paymentsense">
+                                <file name="form.phtml" hash="45978066fc7ee981dec117306a33bb02"/>
+                                <file name="info.phtml" hash="9765a5eae50cb6fa21dcec22e7767e79"/>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+                <dir name="default">
+                    <dir name="default">
+                        <dir name="layout">
+                            <file name="Paymentsense.xml" hash="65e413716658a000d659271cd174b1e2"/>
+                        </dir>
+                        <dir name="template">
+                            <dir name="Paymentsense">
+                                <file name="form.phtml" hash="bf8cf94001d912f6d1e77b1d2b03cf6e"/>
+                                <file name="info.phtml" hash="9765a5eae50cb6fa21dcec22e7767e79"/>
+                            </dir>
+                            <dir name="payment">
+                                <dir name="info">
+                                    <file name="cc_Paymentsense.phtml"
+                                          hash="88065460669f1112779264bdbf710af4"/>
+                                </dir>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+            <dir name="frontend">
+                <dir name="default">
+                    <dir name="default">
+                        <dir name="template">
+                            <dir name="Paymentsense">
+                                <file name="form.phtml" hash="d8c32fe9d0d9584ac03ff7148c18e24a"/>
+                                <file name="info.phtml" hash="c378bb59f085df95a4a6a5d866fc512d"/>
+                                <file name="form.phtml" hash="d8c32fe9d0d9584ac03ff7148c18e24a"/>
+                                <file name="info.phtml" hash="c378bb59f085df95a4a6a5d866fc512d"/>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+                <dir name="base">
+                    <dir name="default">
+                        <dir name="template">
+                            <dir name="Paymentsense">
+                                <file name="form.phtml" hash="d8c32fe9d0d9584ac03ff7148c18e24a"/>
+                                <file name="info.phtml" hash="c378bb59f085df95a4a6a5d866fc512d"/>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+        </target>
+        <target name="mageetc">
+            <dir name="modules">
+                <file name="Paymentsense_All.xml" hash="e1d59fd8c4d4b5d87607f43fecf47e59"/>
+            </dir>
+        </target>
+        <target name="mageskin">
+            <dir name="adminhtml">
+                <dir name="default">
+                    <dir name="default">
+                        <file name="Paymentsense.js" hash="e7b2422644d39f0eb98e63d54a55ae4d"/>
+                    </dir>
+                </dir>
+            </dir>
+            <dir name="frontend">
+                <dir name="base">
+                    <dir name="default">
+                        <dir name="images">
+                            <file name="paymentsense.png" hash="d24a379083a48ade742bddda6aa09103"/>
+                        </dir>
+                    </dir>
+                </dir>
+                <dir name="default">
+                    <dir name="default">
+                        <dir name="images">
+                            <file name="paymentsense.png" hash="d24a379083a48ade742bddda6aa09103"/>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+        </target>
+    </contents>
     <compatible/>
-    <dependencies><required><php><min>4.0.0</min><max>6.0.0</max></php><package><name>Mage_Core_Modules</name><channel>community</channel><min>1.6.0.0</min><max>1.9.1.0</max></package><extension><name>gd</name><min>2.0.28</min><max>3.0</max></extension></required></dependencies>
+    <dependencies>
+        <required>
+            <php>
+                <min>5.1.0</min>
+                <max>6.0.0</max>
+            </php>
+            <package>
+                <name>Mage_Core_Modules</name>
+                <channel>community</channel>
+                <min>1.6.0</min>
+                <max>1.9.9</max>
+            </package>
+        </required>
+    </dependencies>
 </package>
