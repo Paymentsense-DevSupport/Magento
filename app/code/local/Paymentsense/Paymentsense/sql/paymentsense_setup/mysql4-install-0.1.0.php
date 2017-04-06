@@ -44,19 +44,6 @@ try
 	INSERT INTO `{$installer->getTable('sales_order_status')}` (`status`, `label`) VALUES ('csv_preauth', 'Paymentsense - PreAuthorized');
 	INSERT INTO `{$installer->getTable('sales_order_status')}` (`status`, `label`) VALUES ('csv_collected', 'Paymentsense - Payment Collected');
 	");
-
-    $total = Mage::getModel('sales/order')->getCollection()->getSize();
-
-    for($i = 0; $i<=$total; $i++)
-    {
-        $orderId = $i; // Incremented Order Id
-        $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-        $payment = $order->getPayment();
-        $payment->setMethod('Paymentsense');
-        $payment->save();
-        $order->save();
-    }
-
 }
 catch(Exception $exc)
 {
