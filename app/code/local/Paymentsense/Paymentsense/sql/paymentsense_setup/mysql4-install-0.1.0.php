@@ -44,6 +44,11 @@ try
 	INSERT INTO `{$installer->getTable('sales_order_status')}` (`status`, `label`) VALUES ('csv_preauth', 'Paymentsense - PreAuthorized');
 	INSERT INTO `{$installer->getTable('sales_order_status')}` (`status`, `label`) VALUES ('csv_collected', 'Paymentsense - Payment Collected');
 	");
+    $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+    $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+    $prefix = Mage::getConfig()->getTablePrefix();
+    $write->query("UPDATE ".$prefix."sales_flat_order_payment SET method = 'Paymentsense' WHERE method = 'payhosted' OR method = 'pay' OR method = 'paymoto'");
+    $write->query("UPDATE ".$prefix."sales_flat_quote_payment SET method = 'Paymentsense' WHERE method = 'payhosted' OR method = 'pay' OR method = 'paymoto'");
 }
 catch(Exception $exc)
 {
